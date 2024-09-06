@@ -47,7 +47,7 @@ public class SecurityConfig {
 
         http.httpBasic(Customizer.withDefaults());
         http.authorizeHttpRequests(
-                c -> c.requestMatchers("/teacher").hasRole("TEACHER")
+                c -> c/*.requestMatchers("/teacher").hasRole("TEACHER")*/
                         .anyRequest().permitAll()
         );
 
