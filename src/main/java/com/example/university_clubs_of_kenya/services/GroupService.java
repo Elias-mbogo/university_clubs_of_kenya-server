@@ -31,7 +31,7 @@ public class GroupService {
         this.memberRepository = memberRepository;
     }
 
-    public List<GroupMessage> addMessageToStudendGroup(GroupMessage groupMessage){
+    public List<GroupMessage> addMessageToStudentGroup(GroupMessage groupMessage){
         ClubStudent student = clubStudentRepository.findByName(groupMessage.getUsername());
         uniChatRepository.save(new UniChat(null, groupMessage.getBody(), null, AggregateReference.to(student.getId())));
 
