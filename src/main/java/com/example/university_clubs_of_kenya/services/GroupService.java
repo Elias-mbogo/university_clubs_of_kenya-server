@@ -78,7 +78,6 @@ public class GroupService {
         }
 
         return newGroupMessages;
-
     }
 
     public List<GroupMessage> getExpertGroupMessages(){

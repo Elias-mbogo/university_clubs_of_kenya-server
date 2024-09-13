@@ -24,11 +24,12 @@ public class ExpertService {
 
     public List<ChapterName> getCourseChapters(){
         Iterable<Chapter> chapterResults = chapterRepository.findByCourseId(AggregateReference.to(1));
+
         List<Chapter> newChapters = new ArrayList<>();
         chapterResults.forEach(newChapters::add);
 
         List<Chapter> chapters = StreamSupport.stream(chapterResults.spliterator(), false)
-                .collect(Collectors.toList());
+                .toList();
         List<ChapterName> chapterNameList = new ArrayList<>();
 
         for(Chapter chapter: chapters){
@@ -39,15 +40,14 @@ public class ExpertService {
     }
 
     public List<ChapterName> addAndGetCourseChapters(ChapterName chapterName){
-        Chapter newChapter = new Chapter(null, chapterName.getName(), null, AggregateReference.to(1));
-        chapterRepository.save(newChapter);
+        chapterRepository.save(new Chapter(null, chapterName.getName(), null, AggregateReference.to(1)));
 
         Iterable<Chapter> chapterResults = chapterRepository.findByCourseId(AggregateReference.to(1));
         List<Chapter> newChapters = new ArrayList<>();
         chapterResults.forEach(newChapters::add);
 
         List<Chapter> chapters = StreamSupport.stream(chapterResults.spliterator(), false)
-                .collect(Collectors.toList());
+                .toList();
         List<ChapterName> chapterNameList = new ArrayList<>();
 
         for(Chapter chapter: chapters){
