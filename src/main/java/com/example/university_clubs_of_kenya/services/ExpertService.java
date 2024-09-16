@@ -40,7 +40,7 @@ public class ExpertService {
     }
 
     public List<ChapterName> addAndGetCourseChapters(ChapterName chapterName){
-        chapterRepository.save(new Chapter(null, chapterName.getName(), null, AggregateReference.to(1)));
+        chapterRepository.save(new Chapter(null, chapterName.getName(), null, AggregateReference.to(1)))
 
         Iterable<Chapter> chapterResults = chapterRepository.findByCourseId(AggregateReference.to(1));
         List<Chapter> newChapters = new ArrayList<>();
